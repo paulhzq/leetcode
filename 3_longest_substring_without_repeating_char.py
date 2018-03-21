@@ -31,3 +31,21 @@ def lengthOfLongestSubstring(s):
         return max(substrlen)
 
 print(lengthOfLongestSubstring('abc'))
+
+def lengthOfLongestSubstring_2(s):
+    """
+    We can use DP(Dynamic Programming) to solve this problem and time complex
+    will be O(n)
+    """
+    i,j,ans,dict=0,0,0,{}
+    while (i<len(s) and j<len(s)):
+        if s[j] not in dict:
+            dict[s[j]] = 1
+            j += 1
+            ans = max(ans,j-i)
+        else:
+            del dict[s[i]]
+            i += 1
+    return ans
+
+print(lengthOfLongestSubstring_2('bbbb'))
